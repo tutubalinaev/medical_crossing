@@ -1,0 +1,6 @@
+[submodule "SapBert"]
+	path = SapBert
+	url = https://github.com/cambridgeltl/sapbert
+[submodule "Fair-Evaluation-BERT"]
+	path = Fair-Evaluation-BERT
+	url = https://github.com/alexeyev/Fair-Evaluation-BERT

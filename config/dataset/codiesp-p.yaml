@@ -1,0 +1,5 @@
+name: CodiEsp_PROCEDIMIENTO
+# could be "-fair_exact", "-fair_levenshtein" or nothing
+fairness:
+lang: sp
+path: ${dataset.base_dir}/codiesp/PROCEDIMIENTO/test${dataset.fairness}

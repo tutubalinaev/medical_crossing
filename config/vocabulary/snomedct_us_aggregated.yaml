@@ -1,0 +1,2 @@
+name: SNOMEDCT_US-aggregated
+path: ${vocabulary.base_dir}/SNOMEDCT_US-all-aggregated.txt

@@ -1,0 +1,7 @@
+name: "(es) bert_ranking"
+output_parser: fair_eval.FairEvalOutputParser
+model_directory: dccuchile/bert-base-spanish-wwm-uncased
+parameters_mapping: fair_eval
+path_to_script: Fair-Evaluation-BERT/
+script_name: eval_bert_ranking.py
+

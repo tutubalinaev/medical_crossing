@@ -1,0 +1,5 @@
+name: Mantra (fr, DISO)
+# could be "-fair_exact", "-fair_levenshtein" or nothing
+fairness:
+lang: fr
+path: ${dataset.base_dir}/mantra/fr/DISO${dataset.fairness}

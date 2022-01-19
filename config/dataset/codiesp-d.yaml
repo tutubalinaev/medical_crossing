@@ -1,0 +1,5 @@
+name: CodiEsp_DIAGNOSTICO
+# could be "-fair_exact", "-fair_levenshtein" or nothing
+fairness:
+lang: sp
+path: ${dataset.base_dir}/codiesp/DIAGNOSTICO/test${dataset.fairness}

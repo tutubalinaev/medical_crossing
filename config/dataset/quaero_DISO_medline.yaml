@@ -1,0 +1,4 @@
+name: QUAERO-MEDLINE
+# could be "-fair_exact", "-fair_levenshtein" or nothing
+fairness:
+path: ${dataset.base_dir}/quaero_diso/MEDLINE/test${dataset.fairness}

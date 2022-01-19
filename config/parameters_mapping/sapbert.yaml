@@ -1,0 +1,18 @@
+model_directory: model_dir
+data_directory: data_dir
+vocabulary_file: dictionary_path
+output_directory: output_dir
+
+block_size: block_size
+use_cuda: use_cuda
+use_context: use_context
+top_k: topk
+score_mode: score_mode
+filter_composite: filter_composite
+filter_duplicate: filter_duplicate
+save_predictions: save_predictions
+max_length: max_length
+
+# NON-BioSyn
+agg_mode: agg_mode
+custom_query_loader: custom_query_loader

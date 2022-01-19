@@ -1,0 +1,4 @@
+name: cantemist
+lang: sp
+fairness:
+path: ${dataset.base_dir}/cantemist/test-set/cantemist-norm-concepts${dataset.fairness}

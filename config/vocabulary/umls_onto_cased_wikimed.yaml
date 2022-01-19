@@ -1,0 +1,2 @@
+name: umls_onto_cased_wikimed
+path: ${vocabulary.base_dir}/umls_onto_all_lang_cased_wikimed_only_399931.txt

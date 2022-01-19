@@ -1,0 +1,47 @@
+defaults:
+  - _self_
+  # mapping model's parameters to our 'universal' DSL
+  - parameters_mapping: biosyn
+  # model of choice
+  - model: sparse
+  # data for evaluation
+  - dataset: codiesp-p
+  # vocabulary used
+  - vocabulary: codiesp_icd10pcs
+
+original_dir: .
+run_dir: .
+python:
+  # the exact way to call the interpreter
+  # from outside the `universal_runner.py` script
+  interpreter: python3
+
+dataset:
+  base_dir: ${original_dir}/data/datasets
+
+vocabulary:
+  base_dir: ${original_dir}/data/vocabs
+
+model:
+  seed: 100
+  gpus: 1
+  data_directory: ${dataset.path}
+  model_directory: ???
+  vocabulary_file: ${vocabulary.path}
+
+hydra:
+  job:
+    config:
+      override_dirname:
+        exclude_keys:
+          - dataset.base_dir
+          - vocabulary.base_dir
+  help:
+    template:
+      "A script unifying all benchmarks of interest"
+  run:
+    dir: results/sessions_${now:%Y-%m-%d}_${now:%H-%M-%S}
+  sweep:
+    dir: results/sessions_${now:%Y-%m-%d}_${now:%H-%M-%S}
+    subdir: ${hydra.job.override_dirname}
+#    subdir: job${hydra.job.num}__${hydra.job.override_dirname}

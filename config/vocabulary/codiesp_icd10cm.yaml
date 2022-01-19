@@ -1,0 +1,2 @@
+name: ICD10CM-codiesp
+path: ${vocabulary.base_dir}/codiesp-d-codes-es.txt

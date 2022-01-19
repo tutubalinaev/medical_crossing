@@ -1,0 +1,6 @@
+name: "(es, bio) bert_ranking"
+output_parser: fair_eval.FairEvalOutputParser
+model_directory: fvillena/bio-bert-base-spanish-wwm-uncased
+parameters_mapping: fair_eval
+path_to_script: Fair-Evaluation-BERT/
+script_name: eval_bert_ranking.py

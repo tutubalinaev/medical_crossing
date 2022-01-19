@@ -1,0 +1,2 @@
+name: SNOMEDCT_US-disorders
+path: ${vocabulary.base_dir}/SNOMEDCT_US_clef2013-biosyn-aggregated.txt

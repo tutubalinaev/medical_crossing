@@ -1,0 +1,25 @@
+name: "Sparse (tf-idf character uni-/bigrams)"
+output_parser: biosyn.BioSynOutputParser
+#python3 eval.py \
+#    --model_dir ${MODEL_DIR} \
+#    --dictionary_path ${DICT_PATH} \
+#    --data_dir ${DATA_DIR} \
+#    --output_dir ${OUTPUT_DIR} \
+#    --use_cuda \
+#    --topk 20 \
+#    --max_length 25 \
+#    --save_predictions \
+#    --score_mode sparse
+parameters_mapping: biosyn
+model_directory: ${original_dir}/kb_construction/BioSyn/model/biosyn-ncbi-disease
+path_to_script: /kb_construction/BioSyn
+script_name: eval.py
+output_directory: ${run_dir}
+
+use_cuda: True
+top_k: 20
+score_mode: sparse
+save_predictions: True
+max_length: 25
+filter_composite: False
+filter_duplicate: False

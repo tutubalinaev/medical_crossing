@@ -1,0 +1,4 @@
+model_directory: model_dir
+data_directory: data_folder
+vocabulary_file: vocab
+output_directory: output

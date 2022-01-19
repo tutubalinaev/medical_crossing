@@ -1,0 +1,4 @@
+name: QUAERO-EMEA
+# could be "-fair_exact", "-fair_levenshtein" or nothing
+fairness:
+path: ${dataset.base_dir}/quaero_diso/EMEA/test${dataset.fairness}

@@ -1,0 +1,6 @@
+name: "bert_ranking"
+output_parser: fair_eval.FairEvalOutputParser
+model_directory: bert-base-multilingual-cased
+parameters_mapping: fair_eval
+path_to_script: Fair-Evaluation-BERT/
+script_name: eval_bert_ranking.py

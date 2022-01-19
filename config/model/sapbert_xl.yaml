@@ -1,0 +1,32 @@
+name: "sapbert"
+output_parser: sapbert_json.JsonSapbertOutputParser
+
+#MODEL_DIR="cambridgeltl/SapBERT-UMLS-2020AB-all-lang-from-XLMR"
+##MODEL_DIR="cambridgeltl/SapBERT-UMLS-2020AB-all-lang-from-XLMR-large"
+#
+#DATA_DIR="./xl_bel/xlbel_v0.0/de_1k_test_query.txt"
+#DICT_PATH="./xl_bel/umls_onto_all_lang_cased_wikimed_only_399931.txt" # you need to download this from dropbox, see readme
+#
+#CUDA_VISIBLE_DEVICES=$1 python3 eval.py \
+#	--model_dir $MODEL_DIR \
+#	--dictionary_path $DICT_PATH \
+#	--data_dir $DATA_DIR \
+#	--output_dir tmp/ \
+#	--use_cuda \
+#	--max_length 25 \
+#	--custom_query_loader \
+#	--agg_mode cls
+
+parameters_mapping: biosyn
+model_directory: cambridgeltl/SapBERT-UMLS-2020AB-all-lang-from-XLMR # going to download or read from cache
+path_to_script: /SapBert/evaluation
+script_name: eval.py
+
+output_directory: ${run_dir}
+use_cuda: True
+save_predictions: True
+max_length: 25
+filter_composite: False
+filter_duplicate: False
+agg_mode: cls
+custom_query_loader: False
