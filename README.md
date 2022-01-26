@@ -57,12 +57,12 @@ Unfortunately, these benchmarks require a few steps that cannot be automated;
 certain datasets are available only on request after certain formal procedures.
 
 One should obtain
+1. Two corpora: CANTEMIST, MCN, Mantra GSC, CodiEsp (see Section "Datasets & Vocabularies")
 1. UMLS data, precisely: `MRCONSO.RRF`, `MRSTY.RRF`
-2. CLEF2013 eHealth Task 1 data: [link](https://sites.google.com/site/shareclefehealth/)
-3. CANTEMIST vocabulary used by [SINAI research group team](http://ceur-ws.org/Vol-2664/cantemist_paper1.pdf). 
+2. CANTEMIST vocabulary used by [SINAI research group team](http://ceur-ws.org/Vol-2664/cantemist_paper1.pdf). 
 The file 'cieo-synonyms.csv' is available on request.
-4. MCN data introduced in [the original paper](https://doi.org/10.1016/j.jbi.2019.103132). 
-5. [optional] MedLexSp.zip, which is [available on request](http://www.lllf.uam.es/ESP/nlpmedterm_en.html#deliverables) 
+3. MCN data introduced in [the original paper](https://doi.org/10.1016/j.jbi.2019.103132). 
+4. [optional] MedLexSp.zip, which is [available on request](http://www.lllf.uam.es/ESP/nlpmedterm_en.html#deliverables) 
 and requires signing papers.
 
 ### Preparing vocabularies
@@ -85,10 +85,8 @@ Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.t
 1. CANTEMIST: simply run `data_generate_cantemist.sh`; `zenodo_get` is required. The results will be 
 saved into `data/datasets/cantemist`.
 2. MCN: **TODO**
-3. CLEF2013 eHealth: the original data is in `*.json` format. Pass the path to the folder containing `train.json` 
-and `test.json` (should not be `data/datasets/clef2013ehealth`) as the only arg to `data_generate_clef2013.sh`.
-4. CodiEsp: run `data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
-5. MANTRA: **TODO**
+3. CodiEsp: run `data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
+4. MANTRA: **TODO**
 
 
 ## Evaluation without pretraining
