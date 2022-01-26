@@ -77,7 +77,7 @@ This generates `data/vocabs/CANTEMIST-lopez-ubeda-et-al.txt`. `cieo-synonyms.csv
 5. CodiEsp vocabularies: run `vocab_generate_icd10_codiesp.sh`; [zenodo_get](https://pypi.org/project/zenodo-get/) 
 Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.txt` and 
 `data/vocabs/codiesp-p-codes-es.txt` are generated as a result.
-6. MANTRA vocabularies: run **NEED INPUT FROM DMITRY**.
+6. MANTRA vocabularies:  run `vocab_generate_mantra.sh`.
 7. [optional] To prepare MedLexSp, run `vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
 
 ### Preparing datasets
