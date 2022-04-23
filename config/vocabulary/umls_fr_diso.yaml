@@ -1,1 +1,2 @@
-#todo
+name: umls (fr, DISO)
+path: ${vocabulary.base_dir}/umls_fre_diso.txt

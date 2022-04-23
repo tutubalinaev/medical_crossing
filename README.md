@@ -79,6 +79,7 @@ Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.t
 `data/vocabs/codiesp-p-codes-es.txt` are generated as a result.
 6. MANTRA vocabularies:  run `vocab_generate_mantra.sh`.
 7. [optional] To prepare MedLexSp, run `vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
+8. To generate UMLS french DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
 
 ### Preparing datasets
  
