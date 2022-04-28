@@ -114,7 +114,9 @@ python3.6 universal_aggregator.py
 ## Setting up a Docker image
 
 ```bash
+    cd medical_crossing/
     docker build . -t medical_crossing  
+    nvidia-docker run -p 8807:8807 -it medical_crossing:latest bash
 ```
 
 ## References to the works used
