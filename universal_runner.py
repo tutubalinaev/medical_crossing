@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    Исходим из предположения, что все интересующие нас скрипты подразумевают запуск вида
+    We work under assumption that all scripts of interest look like:
     `python xxx.py --argument argument_value --another-argument another_argument_value`
 """
 import logging

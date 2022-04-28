@@ -27,6 +27,7 @@ RUN rm -rf Fair-Evaluation-BERT
 RUN git clone https://github.com/alexeyev/Fair-Evaluation-BERT
 
 # should we use a small one?
+# may consider pre-downloading?
 RUN python -m pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.4.0/en_core_sci_sm-0.4.0.tar.gz
 RUN python -m pip install --upgrade transformers
 WORKDIR /root/NlpOnTransformers/

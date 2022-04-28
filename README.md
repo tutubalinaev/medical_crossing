@@ -57,7 +57,7 @@ Unfortunately, these benchmarks require a few steps that cannot be automated;
 certain datasets are available only on request after certain formal procedures.
 
 One should obtain
-1. Two corpora: CANTEMIST, MCN, Mantra GSC, CodiEsp (see Section "Datasets & Vocabularies")
+1. Several corpora: CANTEMIST, MCN, Mantra GSC, CodiEsp (see Section "Datasets & Vocabularies")
 1. UMLS data, precisely: `MRCONSO.RRF`, `MRSTY.RRF`
 2. CANTEMIST vocabulary used by [SINAI research group team](http://ceur-ws.org/Vol-2664/cantemist_paper1.pdf). 
 The file 'cieo-synonyms.csv' is available on request.
@@ -79,7 +79,7 @@ Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.t
 `data/vocabs/codiesp-p-codes-es.txt` are generated as a result.
 6. MANTRA vocabularies:  run `vocab_generate_mantra.sh`.
 7. [optional] To prepare MedLexSp, run `vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
-8. To generate UMLS french DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
+8. To generate UMLS French DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
 
 ### Preparing datasets
  
@@ -113,9 +113,9 @@ python3.6 universal_aggregator.py
 
 ## Setting up a Docker image
 
-**TODO**
-
-## Other
+```bash
+    docker build . -t medical_crossing  
+```
 
 ## References to the works used
 
