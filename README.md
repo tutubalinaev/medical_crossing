@@ -123,8 +123,10 @@ python3.6 universal_aggregator.py
 
 ### Datasets & vocabularies
 
-* CodiEsp: Clinical Case Coding in Spanish Shared Task (eHealth CLEF 2020) -- https://temu.bsc.es/codiesp/
-* MCN: The 2019 n2c2/UMass Track 3 -- https://n2c2.dbmi.hms.harvard.edu/2019-track-3 
-* CANTEMIST (CANcer TExt Mining Shared Task – tumor named entity recognition -- https://temu.bsc.es/cantemist/
-* Mantra GSC -- http://biosemantics.org/mantra/ https://files.ifi.uzh.ch/cl/mantra/gsc/GSC-v1.1.zip 
+* [CodiEsp](https://temu.bsc.es/codiesp/): Clinical Case Coding in Spanish Shared Task (eHealth CLEF 2020)
+* [MCN](https://n2c2.dbmi.hms.harvard.edu/2019-track-3): The 2019 n2c2/UMass Track 3
+* [CANTEMIST](https://temu.bsc.es/cantemist/) (CANcer TExt Mining Shared Task – tumor named entity recognition 
+* [Mantra GSC](https://files.ifi.uzh.ch/cl/mantra/gsc/GSC-v1.1.zip), [link](http://biosemantics.org/mantra/)
+* [optional] MedLexSp.zip
+* UMLS
 * **TODO**
