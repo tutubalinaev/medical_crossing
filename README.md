@@ -60,33 +60,42 @@ One should obtain
 1. Several corpora: CANTEMIST, MCN, Mantra GSC, CodiEsp (see Section "Datasets & Vocabularies")
 1. UMLS data, precisely: `MRCONSO.RRF`, `MRSTY.RRF`
 2. CANTEMIST vocabulary used by [SINAI research group team](http://ceur-ws.org/Vol-2664/cantemist_paper1.pdf). 
-The file 'cieo-synonyms.csv' is available on request.
+The file 'cieo-synonyms.csv' is available on request to authors.
 3. MCN data introduced in [the original paper](https://doi.org/10.1016/j.jbi.2019.103132). 
 4. [optional] MedLexSp.zip, which is [available on request](http://www.lllf.uam.es/ESP/nlpmedterm_en.html#deliverables) 
 and requires signing papers.
 
 ### Preparing vocabularies
 
-1. Put `MRCONSO.RRF`, `MRSTY.RRF` and `MedLexSp.zip` into the root of the repository.
-2. To generate the English vocabulary used for MCN dataset, run `./generate_snomedct_all.sh`. This would 
+1. Put `MRCONSO.RRF`, `MRSTY.RRF` and [optional] `MedLexSp.zip` into the root of the repository.
+2. To generate the English vocabulary used for MCN dataset, run `./vocab_generate_snomedct_all.sh`. This would 
 generate `data/vocabs/SNOMEDCT_US-all-aggregated.txt`, a large file.
+
+Expected output:
+```1324661 data/vocabs/SNOMEDCT_US-all-aggregated.txt```
+
 3. English vocabulary used specifically for CLEF2013 (disorders only!):
-run `vocab_generate_snomedct_clef2013.sh`. This would generate `data/vocabs/SNOMEDCT_US_clef2013-biosyn-aggregated.txt`.
-4. Spanish vocabulary for CANTEMIST: run `vocab_generate_cantemist_lopez_ubeda_et_al.sh`. 
+run `./vocab_generate_snomedct_clef2013.sh`. This would generate `data/vocabs/SNOMEDCT_US_clef2013-biosyn-aggregated.txt`.
+
+Expected output:
+```363326 data/vocabs/SNOMEDCT_US_clef2013-biosyn-aggregated.txt```
+
+4. Spanish vocabulary for CANTEMIST: run `./vocab_generate_cantemist_lopez_ubeda_et_al.sh`. 
 This generates `data/vocabs/CANTEMIST-lopez-ubeda-et-al.txt`. `cieo-synonyms.csv` should be at the root of the repo. 
-5. CodiEsp vocabularies: run `vocab_generate_icd10_codiesp.sh`; [zenodo_get](https://pypi.org/project/zenodo-get/) 
+5. CodiEsp vocabularies: run `./vocab_generate_icd10_codiesp.sh`; [zenodo_get](https://pypi.org/project/zenodo-get/) 
 Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.txt` and 
 `data/vocabs/codiesp-p-codes-es.txt` are generated as a result.
-6. MANTRA vocabularies:  run `vocab_generate_mantra.sh`.
-7. [optional] To prepare MedLexSp, run `vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
-8. To generate UMLS French DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
+6. **TODO:** MANTRA vocabularies:  run `./vocab_generate_mantra.sh`.
+7. To generate UMLS French DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
+8. [optional] To prepare MedLexSp, run `./vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
+
 
 ### Preparing datasets
  
-1. CANTEMIST: simply run `data_generate_cantemist.sh`; `zenodo_get` is required. The results will be 
+1. CANTEMIST: simply run `./data_generate_cantemist.sh`; `zenodo_get` is required. The results will be 
 saved into `data/datasets/cantemist`.
 2. MCN: **TODO**
-3. CodiEsp: run `data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
+3. CodiEsp: run `./data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
 4. MANTRA: **TODO**
 
 
@@ -116,7 +125,7 @@ python3.6 universal_aggregator.py
 ```bash
     cd medical_crossing/
     docker build . -t medical_crossing  
-    nvidia-docker run -p 8807:8807 -it medical_crossing:latest bash
+    nvidia-docker run -p 8807:8807 -v "`pwd`:/root/medical_crossing/" -it medical_crossing:latest bash
 ```
 
 ## References to the works used

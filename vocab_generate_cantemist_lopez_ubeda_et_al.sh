@@ -6,3 +6,5 @@ if [ ! -f cieo-synonyms.csv ]; then
 fi
 
 python3 utils/scripts/cieo_synonyms_preparation_as_is.py
+
+echo "Done."

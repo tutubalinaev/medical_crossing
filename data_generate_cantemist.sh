@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # https://zenodo.org/record/3978041#.YYlmQLpn02w
-#zenodo_get 3978041
+zenodo_get 3978041
 
 rm -r data/datasets/cantemist
 mkdir data/datasets/cantemist

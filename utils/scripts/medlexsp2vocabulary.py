@@ -4,6 +4,7 @@
     http://www.lllf.uam.es/ESP/nlpdata/wp1/MedLexSp-sample.dsv
 """
 
+from tqdm import tqdm
 from argparse import ArgumentParser
 from collections import defaultdict
 
@@ -16,7 +17,7 @@ if __name__ == "__main__":
     agg = defaultdict(lambda: [])
 
     with open(args.dsv_input, "r+", encoding="utf-8") as rf:
-        for line in rf:
+        for line in tqdm(rf):
             line = line.strip().split("|")
             cui, lemma, options = line[0], line[1].lower().strip(), line[2].split(";")
             agg[lemma].append(cui)
