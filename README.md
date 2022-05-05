@@ -85,7 +85,7 @@ This generates `data/vocabs/CANTEMIST-lopez-ubeda-et-al.txt`. `cieo-synonyms.csv
 5. CodiEsp vocabularies: run `./vocab_generate_icd10_codiesp.sh`; [zenodo_get](https://pypi.org/project/zenodo-get/) 
 Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.txt` and 
 `data/vocabs/codiesp-p-codes-es.txt` are generated as a result.
-6. **TODO:** MANTRA vocabularies:  run `./vocab_generate_mantra.sh`.
+6. MANTRA vocabularies:  run `./vocab_generate_mantra.sh` [in progress].
 7. To generate UMLS French DISO vocabulary run `./vocab_generate_umls_fre_diso.sh`. This would generate `data/vocabs/umls_fre_diso.txt`.
 8. [optional] To prepare MedLexSp, run `./vocab_generate_medlexsp.sh`; file `data/vocabs/MedLexSp_v0.txt` should be generated.
 
@@ -94,9 +94,9 @@ Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.t
  
 1. CANTEMIST: simply run `./data_generate_cantemist.sh`; `zenodo_get` is required. The results will be 
 saved into `data/datasets/cantemist`.
-2. MCN: the data can be downloaded [here](https://portal.dbmi.hms.harvard.edu/projects/n2c2-2019-t3/), after the registration.
+2. MCN: the data can be downloaded [here](https://portal.dbmi.hms.harvard.edu/projects/n2c2-2019-t3/), after the registration. The unpacked data should be put into a folder `data/datasets/MCN_n2c2` (so that the folders `test`, `train`, `gold` would be present). Then scripts `./data_generate_mcn.sh` and `query_preprocess_in_the_style_of_biosyn.sh` should be executed [in progress].
 3. CodiEsp: run `./data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
-4. MANTRA: **TODO**
+4. MANTRA: can be downloaded [here](https://files.ifi.uzh.ch/cl/mantra/gsc/GSC-v1.1.zip) [in progress].
 
 ### Filtering datasets
 
@@ -166,4 +166,3 @@ python3.6 universal_aggregator.py
 * [Mantra GSC](https://files.ifi.uzh.ch/cl/mantra/gsc/GSC-v1.1.zip), [link](http://biosemantics.org/mantra/)
 * [optional] MedLexSp.zip
 * UMLS 2020AA
-* **TODO**
