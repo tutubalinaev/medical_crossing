@@ -17,19 +17,12 @@ THRESHOLD=0.2
 #                          --levenshtein_threshold $THRESHOLD
 
 # cantemist
-#python3 fairification.py --train_dir data/datasets/cantemist/train-set/cantemist-norm-concepts \
-#                          --test_dir data/datasets/cantemist/test-set/cantemist-norm-concepts \
-#                          --vocabulary data/vocabs/CANTEMIST-lopez-ubeda-et-al.txt \
-#                          --levenshtein_norm_method 1 \
-#                          --levenshtein_threshold $THRESHOLD > cantemist-fair.out &
-
-
-# codiesp
-python3 fairification.py --test_dir data/datasets/codiesp/PROCEDIMIENTO/test \
-                          --train_dir data/datasets/codiesp/PROCEDIMIENTO/train \
-                          --vocabulary data/vocabs/codiesp-p-codes-es.txt \
+python3 fairification.py --train_dir data/datasets/cantemist/train-set/cantemist-norm-concepts \
+                          --test_dir data/datasets/cantemist/test-set/cantemist-norm-concepts \
+                          --vocabulary data/vocabs/CANTEMIST-lopez-ubeda-et-al.txt \
                           --levenshtein_norm_method 1 \
-                          --levenshtein_threshold $THRESHOLD > PROCEDIMIENTO-fair.out &
+                          --levenshtein_threshold $THRESHOLD > cantemist-fair.out &
+
 #
 ## codiesp
 python3 fairification.py --test_dir data/datasets/codiesp/DIAGNOSTICO/test \

@@ -58,7 +58,7 @@ certain datasets are available only on request after certain formal procedures.
 
 One should obtain
 1. Several corpora: CANTEMIST, MCN, Mantra GSC, CodiEsp (see Section "Datasets & Vocabularies")
-1. UMLS data, precisely: `MRCONSO.RRF`, `MRSTY.RRF`
+1. UMLS 2020AA data, precisely: `MRCONSO.RRF`, `MRSTY.RRF`
 2. CANTEMIST vocabulary used by [SINAI research group team](http://ceur-ws.org/Vol-2664/cantemist_paper1.pdf). 
 The file 'cieo-synonyms.csv' is available on request to authors.
 3. MCN data introduced in [the original paper](https://doi.org/10.1016/j.jbi.2019.103132). 
@@ -94,9 +94,37 @@ Python package tool should be installed. Files `data/vocabs/codiesp-d-codes-es.t
  
 1. CANTEMIST: simply run `./data_generate_cantemist.sh`; `zenodo_get` is required. The results will be 
 saved into `data/datasets/cantemist`.
-2. MCN: **TODO**
+2. MCN: the data can be downloaded [here](https://portal.dbmi.hms.harvard.edu/projects/n2c2-2019-t3/), after the registration.
 3. CodiEsp: run `./data_generate_codiesp.sh` (requires `zenodo_get`), the results will be written to `data/datasets/codiesp`.
 4. MANTRA: **TODO**
+
+### Filtering datasets
+
+Example:
+
+```bash
+python3 fairification.py --test_dir data/datasets/codiesp/DIAGNOSTICO/test \
+                          --train_dir data/datasets/codiesp/DIAGNOSTICO/train \
+                          --vocabulary data/vocabs/codiesp-d-codes-es.txt \
+                          --levenshtein_norm_method 1 \
+                          --levenshtein_threshold 0.2
+```
+
+This may take a while; should generate folders:
+```
+data/
+└─── datasets/
+|    └─── codiesp/
+|    |    └─── DIAGNOSTICO/
+|    |    |    test-fair_exact/
+|    |    |    ... 
+|    |    |    test-fair_exact_vocab/
+|    |    |    ... 
+|    |    |    test-fair_levenshtein_0.2/
+|    |    |    ... 
+|    |    |    test-fair_levenshtein_train_0.2/
+|    |    |    ... 
+```
 
 
 ## Evaluation without pretraining
@@ -137,5 +165,5 @@ python3.6 universal_aggregator.py
 * [CANTEMIST](https://temu.bsc.es/cantemist/) (CANcer TExt Mining Shared Task – tumor named entity recognition 
 * [Mantra GSC](https://files.ifi.uzh.ch/cl/mantra/gsc/GSC-v1.1.zip), [link](http://biosemantics.org/mantra/)
 * [optional] MedLexSp.zip
-* UMLS
+* UMLS 2020AA
 * **TODO**

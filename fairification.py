@@ -25,29 +25,40 @@ def read_all_concept_files(directory: str):
 
 
 if __name__ == "__main__":
+    import logging
+    import sys
+
+    logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
+
     parser = ArgumentParser()
-    parser.add_argument("--train_dir", default=None)
-    parser.add_argument("--vocabulary", required=True, type=str)
-    parser.add_argument("--test_dir", required=True)
-    parser.add_argument("--levenshtein_norm_method", default=1, type=int)
-    parser.add_argument("--levenshtein_threshold", default=0.2, type=float)
+    parser.add_argument("--train_dir", default=None, type=str, help="The training data directory with *.concept files.")
+    parser.add_argument("--vocabulary", required=True, type=str, help="A path to a vocabulary file.")
+    parser.add_argument("--test_dir", required=True, type=str, help="The test data directory with *.concept files.")
+    parser.add_argument("--levenshtein_norm_method", default=1, type=int,
+                        help="Edit distance normalization method; should be set to 1 to reproduce the approach used "
+                             "in the paper: Levenshtein distance divided by the length of the longest string")
+    parser.add_argument("--levenshtein_threshold", default=0.2, type=float,
+                        help="Cutoff threshold for normalized Levenshtein distance.")
 
     args = parser.parse_args()
 
+    # reading train data if available
     if args.train_dir is not None:
         train_texts = sorted(list(set(read_all_concept_files(args.train_dir))))
-        print(f"---\nA total of {len(train_texts)} unique concept mentions in TRAIN: {args.train_dir}.")
+        logging.info(f"---\nA total of {len(train_texts)} unique concept mentions in TRAIN: {args.train_dir}.")
     else:
         train_texts = None
-        print("Train dir is not set.")
+        logging.info("Train dir is not set.")
 
+    # reading vocabulary
     vocab_texts = sorted(
         list(set([line.strip().split("||")[1].lower() for line in open(args.vocabulary, "r", encoding="utf-8")])))
-    print(f"---\nA total of {len(vocab_texts)} unique concept mentions in VOCAB: {args.vocabulary}.")
+    logging.info(f"---\nA total of {len(vocab_texts)} unique concept mentions in VOCAB: {args.vocabulary}.")
 
     tree_vocab = filter_by_levenshtein.Tree(vocab_texts)
     vocab_texts = set(vocab_texts)
 
+    # training set filtering
     if train_texts is not None:
         tree_train = filter_by_levenshtein.Tree(train_texts)
         train_texts_set = set(train_texts)
@@ -70,9 +81,9 @@ if __name__ == "__main__":
                                                                        found_vocab_entries,
                                                                        args.levenshtein_threshold,
                                                                        args.levenshtein_norm_method)
-        print(mention, ", duplicates:", resulting_vocab_entries)
+        logging.info(f"{mention}  duplicates: {resulting_vocab_entries}")
 
-        # if we found fuzzy duplicates, we should not keep this item in a test set
+        # if we have found fuzzy duplicates, we should not keep this item in a test set
         return len(resulting_vocab_entries) > 0
 
     def levenshtein_match_train(mention):
@@ -83,14 +94,19 @@ if __name__ == "__main__":
                                                                        found_vocab_entries,
                                                                        args.levenshtein_threshold,
                                                                        args.levenshtein_norm_method)
-        print(mention, ", duplicates:", resulting_vocab_entries)
+
+        logging.info(f"{mention}  duplicates: {resulting_vocab_entries}")
 
         # if we found fuzzy duplicates, we should not keep this item in a test set
         return len(resulting_vocab_entries) > 0
 
     methods_setup = [
         # needs vocab
-        {"appendix": f"-fair_exact_vocab", "counter_saved": 0, "unique_names": set([]), "method": exact_match_vocab},
+        {"appendix": f"-fair_exact_vocab",
+         "counter_saved": 0,
+         "unique_names": set([]),
+         "method": exact_match_vocab},
+
         # needs vocab
         {"appendix": f"-fair_levenshtein_{args.levenshtein_threshold}",
          "counter_saved": 0,
@@ -156,7 +172,7 @@ if __name__ == "__main__":
 
         wf.write(f"{args.test_dir}\t{args.vocabulary}\n{counter_total}\t{len(unique_total)}\n")
 
-        print("TOTAL STATS:", counter_total, "unique:", len(unique_total), "in", args.test_dir)
+        logging.info(f"TOTAL STATS: {counter_total} unique: {len(unique_total)} in {args.test_dir}")
 
         for item in methods_setup:
             item["writer"].close()
@@ -164,7 +180,7 @@ if __name__ == "__main__":
             del item["appendix"]
             del item["method"]
             item["unique_names"] = len(item["unique_names"])
-            print(item)
+            logging.info(str(item))
             wf.write(f"{item['counter_saved']}\t{item['unique_names']}\t{item['path']}\n")
 
         wf.write("\n")

@@ -2,7 +2,6 @@
 
 import os
 import re
-import numpy as np
 
 RE_D = re.compile('\d')
 
