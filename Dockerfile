@@ -32,3 +32,4 @@ RUN python -m pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/rel
     python -m pip install en_core_sci_sm-0.4.0.tar.gz
 RUN python -m pip install --upgrade transformers
 WORKDIR /root/medical_crossing/
+
