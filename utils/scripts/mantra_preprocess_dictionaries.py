@@ -85,6 +85,18 @@ if __name__ == "__main__":
 
         if 'mantra_pre' in file:
             str_set = set()
-            out_path = os.path.join(to_dir, file.replace("_pre", "_prefinal"))
+            out_path = os.path.join(to_dir, file.replace("_pre", "_patchable"))
             in_path = os.path.join(to_dir, file)
             merge_dict(in_path, out_path)
+
+            print("Removing", in_path)
+            # os.remove(in_path)
+        elif "mantra_raw" in file:
+            print("Removing", os.path.join(to_dir, file))
+            # os.remove(os.path.join(to_dir, file))
+
+
+    # cleanup
+    # for file in os.listdir(to_dir):
+    #     if file.endswith(".txt") and file.startswith("mantra_") and  "patchable" not in file:
+    #         os.remove(os.path.join(to_dir, file))

@@ -90,36 +90,42 @@ def filter_dict_by_group(in_path, out_path, target_group):
 
 if __name__ == "__main__":
 
-    print("Reading MRCONSO.RRF...")
+    import numpy as np
+    languages = ["nl", "eng", "fr", "de", "es"]
 
-    data = pd.read_csv("./MRCONSO.RRF", sep="|", header=None)
+    if not np.all([os.path.exists(f"data/vocabs/{l}_dictionary.txt") for l in languages]):
 
-    print("Getting language-specific data from MRCONSO...")
+        print("Reading MRCONSO.RRF...")
 
-    eng_data = data[(data[11] == "MDR") | (data[11] == "MSH") | (data[11] == "SNOMEDCT_US")]
-    fr_data = data[(data[11] == "MDRFRE") | (data[11] == "MSHFRE")]
-    es_data = data[(data[11] == "MDRSPA") | (data[11] == "MSHSPA") | (data[11] == "SCTSPA")]
-    de_data = data[(data[11] == "MDRGER") | (data[11] == "MSHGER")]
-    nl_data = data[(data[11] == "MDRDUT") | (data[11] == "MSHDUT")]
+        data = pd.read_csv("./MRCONSO.RRF", sep="|", header=None)
 
-    print("Writing dictionaries for languages...")
+        print("Getting language-specific data from MRCONSO...")
 
-    if not os.path.exists("data/vocabs/eng_dictionary.txt"):
-        process_language_dict(eng_data, "data/vocabs/eng_dictionary.txt")
+        eng_data = data[(data[11] == "MDR") | (data[11] == "MSH") | (data[11] == "SNOMEDCT_US")]
+        fr_data = data[(data[11] == "MDRFRE") | (data[11] == "MSHFRE")]
+        es_data = data[(data[11] == "MDRSPA") | (data[11] == "MSHSPA") | (data[11] == "SCTSPA")]
+        de_data = data[(data[11] == "MDRGER") | (data[11] == "MSHGER")]
+        nl_data = data[(data[11] == "MDRDUT") | (data[11] == "MSHDUT")]
 
-    if not os.path.exists("data/vocabs/fr_dictionary.txt"):
-        process_language_dict(fr_data, "data/vocabs/fr_dictionary.txt")
+        print("Writing dictionaries for languages...")
 
-    if not os.path.exists("data/vocabs/es_dictionary.txt"):
-        process_language_dict(es_data, "data/vocabs/es_dictionary.txt")
+        if not os.path.exists("data/vocabs/eng_dictionary.txt"):
+            process_language_dict(eng_data, "data/vocabs/eng_dictionary.txt")
 
-    if not os.path.exists("data/vocabs/de_dictionary.txt"):
-        process_language_dict(de_data, "data/vocabs/de_dictionary.txt")
+        if not os.path.exists("data/vocabs/fr_dictionary.txt"):
+            process_language_dict(fr_data, "data/vocabs/fr_dictionary.txt")
 
-    if not os.path.exists("data/vocabs/nl_dictionary.txt"):
-        process_language_dict(nl_data, "data/vocabs/nl_dictionary.txt")
+        if not os.path.exists("data/vocabs/es_dictionary.txt"):
+            process_language_dict(es_data, "data/vocabs/es_dictionary.txt")
 
-    print("Language dictionaries built.")
+        if not os.path.exists("data/vocabs/de_dictionary.txt"):
+            process_language_dict(de_data, "data/vocabs/de_dictionary.txt")
+
+        if not os.path.exists("data/vocabs/nl_dictionary.txt"):
+            process_language_dict(nl_data, "data/vocabs/nl_dictionary.txt")
+
+        print("Language dictionaries built.")
+
     print("Reading MRSTY.RRF...")
 
     data = pd.read_csv("./MRSTY.RRF", sep="|", header=None)
@@ -144,7 +150,6 @@ if __name__ == "__main__":
         types = json.load(f)
 
     target_groups = "ANAT, CHEM, DEVI, DISO, GEOG, LIVB, OBJC, PHEN, PHYS, PROC".split(", ")
-    languages = ["nl", "eng", "fr", "de", "es"]
 
     print("Filtering dictionaries by language and target group...")
 
